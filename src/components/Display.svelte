@@ -1,5 +1,6 @@
 <script>
     export let tests;
+    export let select;
 
 </script>
 
@@ -7,11 +8,7 @@
     <ul>
         {#each tests as test}
             <li>
-                <h3>
-                    name: {test.name} 
-                    <br/>
-                    age: {test.age}
-                </h3>
+                <button on:click={() => select(test)}> name: {test.name} age: {test.age} </button>
             </li>
         {/each}
     </ul>

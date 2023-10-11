@@ -5,17 +5,20 @@
     export let id
     export let action
     export let create
+    export let update
 
     //functions
     const handleSubmit = (event) => {
+        
         event.preventDefault()
+        
         if(action === 'create'){
             console.log("hello create")
             create({name, age})
         }
 
         if(action == 'update'){
-            console.log('hello update')
+            update({name, age, id})
         }
     }
 

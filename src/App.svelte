@@ -50,6 +50,26 @@
     resetState()
   }
 
+  // Select test for updating
+  const selectTestToUpdate = (test) => {
+    name = test.name
+    age = test.age
+    id = test.id
+    action = "update"
+    showForm = true
+  }
+
+  // Update Function
+  const updateTest = async(test) => {
+    await fetch(url + `${test.id}/`, {
+      method: 'put',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(test)
+    })
+    getTests()
+    resetState()
+  }
+
   //lifecycle
   onMount(() => {getTests()})
 
@@ -63,7 +83,10 @@
   
   <!-- display is done through getTests() in app, tests prop & mapping in display.  -->
   <!-- filling the tests state with the tests fetched from getTests() -->
-  <Display tests={tests}/>
+  <Display 
+    tests={tests}
+    select={selectTestToUpdate}
+  />
   
   {#if showForm}
     <Form
@@ -72,6 +95,7 @@
       id={id}
       action={action}
       create={createTest}
+      update={updateTest}
     />
   {/if}
 
