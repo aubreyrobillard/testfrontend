@@ -70,6 +70,15 @@
     resetState()
   }
 
+    // Delete Function
+    const deleteTest = async(test) => {
+    await fetch(url + `${test.id}/`, {
+      method: 'delete',
+    })
+    getTests()
+    resetState()
+  }
+
   //lifecycle
   onMount(() => {getTests()})
 
@@ -86,6 +95,7 @@
   <Display 
     tests={tests}
     select={selectTestToUpdate}
+    destroy={deleteTest}
   />
   
   {#if showForm}

@@ -19,6 +19,7 @@
 
         if(action == 'update'){
             update({name, age, id})
+            
         }
     }
 
@@ -31,5 +32,7 @@
         <input type=number bind:value={age}>
         <input type=submit>
     </form>
+
+    
 
 </div>
